@@ -80,6 +80,7 @@
             transition: filter 0.4s ease;
         }
         
+        /* Новый стиль для эффекта размытия на заднем фоне */
         .background-effect {
             position: fixed;
             top: 0;
@@ -89,30 +90,6 @@
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(15px);
             z-index: -1;
-        }
-
-        /* Стиль для всплывающего окна */
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            display: none;
-            z-index: 10;
-        }
-
-        .popup h3 {
-            margin: 0 0 10px;
-        }
-
-        .close-btn {
-            cursor: pointer;
-            color: #3498db;
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -126,7 +103,6 @@
             <div class="tab" onclick="openTab('social')">Социальные сети</div>
             <div class="tab" onclick="openTab('settings')">Настройки игр</div>
         </div>
-
         <div id="social" class="content active">
             <h2>Социальные сети</h2>
             <ul>
@@ -146,48 +122,39 @@
         <div id="settings" class="content">
             <h2>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h2>
             <ul>
-                <li><strong>VALORANT</strong> <span class="close-btn" onclick="openPopup('valorant')">[Показать настройки]</span></li>
-                <li><strong>CS</strong> <span class="close-btn" onclick="openPopup('cs')">[Показать настройки]</span></li>
-            </ul>
-        </div>
-
-        <!-- Всплывающее окно для Valorant -->
-        <div id="valorant" class="popup">
-            <h3>Настройки Valorant</h3>
-            <ul>
-                <li><strong>Чувствительность:</strong> 0.42</li>
-                <li><strong>DPI:</strong> 800</li>
-                <li><strong>Разрешение экрана:</strong> 1280x1090</li>
-            </ul>
-            <span class="close-btn" onclick="closePopup('valorant')">Закрыть</span>
-        </div>
-
-        <!-- Всплывающее окно для CS:GO -->
-        <div id="cs" class="popup">
-            <h3>Настройки CS:GO</h3>
-            <ul>
-                <li><strong>Настройки мыши:</strong></li>
+                <li><strong>VALORANT</strong></li>
                 <ul>
-                    <li><strong>DPI:</strong> 1200-800</li>
-                    <li><strong>Чувствительность мыши:</strong> 1.5</li>
-                    <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
-                    <li><strong>m_yaw:</strong> 0.022</li>
+                    <li><strong>Чувствительность:</strong> 0.42</li>
+                    <li><strong>DPI:</strong> 800</li>
+                    <li><strong>Разрешение экрана:</strong> 1280x1090</li>
                 </ul>
-                <li><strong>Параметры запуска:</strong> -language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
-                <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
-                <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
-                <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
-                <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
-                <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
+                <li><strong>CS</strong></li>
+                <ul>
+                    <li><strong>Настройки мыши:</strong></li>
+                    <ul>
+                        <li><strong>DPI:</strong> 1200-800</li>
+                        <li><strong>Чувствительность мыши:</strong> 1.5</li>
+                        <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
+                        <li><strong>m_yaw:</strong> 0.022</li>
+                    </ul>
+                    <li><strong>Параметры запуска:</strong></li>
+                    <ul>
+                        <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
+                    </ul>
+                    <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
+                    <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
+                    <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
+                    <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
+                    <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
+                </ul>
             </ul>
-            <span class="close-btn" onclick="closePopup('cs')">Закрыть</span>
         </div>
     </div>
 
     <script>
         const tabs = document.querySelectorAll('.tab');
         const contents = document.querySelectorAll('.content');
-
+        
         function openTab(tabName) {
             contents.forEach(content => {
                 content.classList.remove('active');
@@ -195,12 +162,17 @@
             document.getElementById(tabName).classList.add('active');
         }
 
-        // Функция открытия всплывающего окна
-        function openPopup(popupName) {
-            document.getElementById(popupName).style.display = 'block';
-        }
+        // Анимация взаимодействия с курсором
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
 
-        // Функция закрытия всплывающего окна
-        function closePopup(popupName) {
-            document.getElementById(popupName).style.display = 'none';
-        }
+            document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+        });
+
+        // Показ первой вкладки по умолчанию
+        document.getElementById("social").classList.add("active");
+    </script>
+
+</body>
+</html>
