@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои настройки и соцсети</title>
+    <title>Мой сайт</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,6 +13,8 @@
             background-size: 200% 200%;
             animation: gradientAnimation 10s ease infinite;
             color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
         }
 
         @keyframes gradientAnimation {
@@ -24,7 +26,7 @@
         h1 {
             text-align: center;
             margin-top: 20px;
-            font-size: 2em;
+            font-size: 2.5em;
         }
 
         .tabs {
@@ -50,13 +52,18 @@
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transition: opacity 0.6s ease, max-height 0.6s ease;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
         }
 
         .active {
             opacity: 1;
             max-height: 1000px;
             overflow: visible;
+        }
+
+        .blur {
+            filter: blur(8px);
+            transition: filter 0.4s ease;
         }
 
         ul {
@@ -72,66 +79,129 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .background-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            transition: opacity 0.4s ease;
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .active-bg {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
-    <h1>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h1>
-
-    <div class="tabs">
-        <div class="tab" onclick="openTab('valorant')">VALORANT</div>
-        <div class="tab" onclick="openTab('cs')">CS</div>
-    </div>
-
-    <div id="valorant" class="content active">
-        <h2>VALORANT</h2>
-        <ul>
-            <li><strong>Чувствительность:</strong> 0.42</li>
-            <li><strong>DPI:</strong> 800</li>
-            <li><strong>Разрешение экрана:</strong> 1280x1090</li>
-        </ul>
-    </div>
-
-    <div id="cs" class="content">
-        <h2>CS</h2>
-        <ul>
-            <li><strong>Настройки мыши:</strong></li>
+    <div class="info">
+        <h1>Мой сайт</h1>
+        <div class="tabs">
+            <div class="tab" onclick="openTab('social')">Социальные сети</div>
+            <div class="tab" onclick="openTab('settings')">Настройки игр</div>
+        </div>
+        <div id="social" class="content active">
+            <h2>Социальные сети</h2>
             <ul>
-                <li><strong>DPI:</strong> 1200-800</li>
-                <li><strong>Чувствительность мыши:</strong> 1.5</li>
-                <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
-                <li><strong>m_yaw:</strong> 0.022</li>
+                <li><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></li>
+                <li><a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a></li>
+                <li>Discord: yosuy</li>
+                <li><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a></li>
+                <li>Valorant: <span class="blur">...размыто...</span></li>
+                <li>Telegram: <span class="blur">...размыто...</span></li>
+                <li><a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Trade Offer Steam</a></li>
+                <li><a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a></li>
+                <li>Valorant Tracker: <span class="blur">...размыто...</span></li>
+                <li><a href="https://soundcloud.com/yosuywww/likes" target="_blank">Мой плейлист</a></li>
             </ul>
-            <li><strong>Параметры запуска:</strong></li>
+        </div>
+
+        <div id="settings" class="content">
+            <h2>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h2>
             <ul>
-                <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
+                <li><strong>VALORANT</strong></li>
+                <ul>
+                    <li><strong>Чувствительность:</strong> 0.42</li>
+                    <li><strong>DPI:</strong> 800</li>
+                    <li><strong>Разрешение экрана:</strong> 1280x1090</li>
+                </ul>
+                <li><strong>CS</strong></li>
+                <ul>
+                    <li><strong>Настройки мыши:</strong></li>
+                    <ul>
+                        <li><strong>DPI:</strong> 1200-800</li>
+                        <li><strong>Чувствительность мыши:</strong> 1.5</li>
+                        <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
+                        <li><strong>m_yaw:</strong> 0.022</li>
+                    </ul>
+                    <li><strong>Параметры запуска:</strong></li>
+                    <ul>
+                        <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
+                    </ul>
+                    <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
+                    <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
+                    <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
+                    <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
+                    <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
+                </ul>
             </ul>
-            <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
-            <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
-            <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
-            <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
-            <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
-        </ul>
+        </div>
+
+        <div class="background-effect" id="backgroundEffect"></div>
     </div>
 
     <script>
-        function openTab(tabName) {
-            var i, content, tabs;
-            content = document.getElementsByClassName("content");
-            for (i = 0; i < content.length; i++) {
-                content[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.add("active");
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.content');
+        const backgroundEffect = document.getElementById('backgroundEffect');
 
-            tabs = document.getElementsByClassName("tab");
-            for (i = 0; i < tabs.length; i++) {
-                tabs[i].style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-            }
+        function openTab(tabName) {
+            contents.forEach(content => {
+                content.classList.remove('active');
+                content.style.filter = '';
+            });
+            document.getElementById(tabName).classList.add('active');
+            document.querySelectorAll('.blur').forEach(el => {
+                el.classList.add('blur');
+            });
+
+            tabs.forEach(tab => {
+                tab.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+            });
+
             event.target.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+            backgroundEffect.classList.add('active-bg');
         }
 
+        // Анимация взаимодействия с курсором
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+        });
+
         // Показ первой вкладки по умолчанию
-        document.getElementById("valorant").classList.add("active");
+        document.getElementById("social").classList.add("active");
     </script>
 
 </body>
