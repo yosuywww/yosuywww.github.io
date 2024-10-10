@@ -6,7 +6,7 @@
     <title>Мои настройки и соцсети</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(120deg, #1b1b1b, #000);
@@ -21,34 +21,44 @@
             100% { background-position: 0% 50%; }
         }
 
-        h1, h2 {
-            color: #fff;
-            margin-bottom: 10px;
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab {
+            margin: 0 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: rgba(255, 255, 255, 0.3);
         }
 
         .content {
+            display: none;
             padding: 20px;
+            text-align: left;
         }
 
-        .settings, .social-links {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: rgba(30, 30, 30, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        .active {
+            display: block;
         }
 
-        .settings h2 {
-            margin-top: 0;
-        }
-
-        .settings ul {
+        ul {
             padding-left: 20px;
-            line-height: 1.6; /* Увеличенное расстояние между строками */
-        }
-
-        .settings ul li {
-            margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         a {
@@ -63,42 +73,63 @@
 </head>
 <body>
 
-    <!-- Основное содержание -->
-    <div class="content">
-        <h1>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h1>
+    <h1>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h1>
 
-        <div class="settings">
-            <h2>VALORANT</h2>
-            <ul>
-                <li><strong>Чувствительность:</strong> 0.42</li>
-                <li><strong>DPI:</strong> 800</li>
-                <li><strong>Разрешение экрана:</strong> 1280x1090</li>
-            </ul>
-        </div>
-
-        <div class="settings">
-            <h2>CS</h2>
-            <ul>
-                <li><strong>Настройки мыши:</strong></li>
-                <ul>
-                    <li><strong>DPI:</strong> 1200-800</li>
-                    <li><strong>Чувствительность мыши:</strong> 1.5</li>
-                    <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
-                    <li><strong>m_yaw:</strong> 0.022</li>
-                </ul>
-                <li><strong>Параметры запуска:</strong></li>
-                <ul>
-                    <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
-                </ul>
-                <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
-                <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
-                <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
-                <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
-                <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
-            </ul>
-        </div>
-
+    <div class="tabs">
+        <div class="tab" onclick="openTab('valorant')">VALORANT</div>
+        <div class="tab" onclick="openTab('cs')">CS</div>
     </div>
+
+    <div id="valorant" class="content active">
+        <h2>VALORANT</h2>
+        <ul>
+            <li><strong>Чувствительность:</strong> 0.42</li>
+            <li><strong>DPI:</strong> 800</li>
+            <li><strong>Разрешение экрана:</strong> 1280x1090</li>
+        </ul>
+    </div>
+
+    <div id="cs" class="content">
+        <h2>CS</h2>
+        <ul>
+            <li><strong>Настройки мыши:</strong></li>
+            <ul>
+                <li><strong>DPI:</strong> 1200-800</li>
+                <li><strong>Чувствительность мыши:</strong> 1.5</li>
+                <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
+                <li><strong>m_yaw:</strong> 0.022</li>
+            </ul>
+            <li><strong>Параметры запуска:</strong></li>
+            <ul>
+                <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
+            </ul>
+            <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
+            <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
+            <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
+            <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
+            <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, content, tabs;
+            content = document.getElementsByClassName("content");
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+
+            tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+            }
+            event.target.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+        }
+
+        // Показ первой вкладки по умолчанию
+        document.getElementById("valorant").style.display = "block";
+    </script>
 
 </body>
 </html>
