@@ -9,15 +9,21 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: radial-gradient(circle at center, #1b1b1b 0%, #000 100%);
-            background-attachment: fixed;
-            background-size: cover;
-            background-color: #000;
+            background: linear-gradient(120deg, #1b1b1b, #000);
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite;
             color: #f0f0f0;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         h1, h2 {
             color: #fff;
+            margin-bottom: 10px;
         }
 
         .content {
@@ -32,9 +38,17 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .settings h2 {
+            margin-top: 0;
+        }
+
+        .settings ul {
+            padding-left: 20px;
+            line-height: 1.6; /* Увеличенное расстояние между строками */
+        }
+
+        .settings ul li {
+            margin-bottom: 10px;
         }
 
         a {
@@ -83,19 +97,6 @@
                 <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
             </ul>
         </div>
-
-        <!-- Блок соцсетей (если нужно) -->
-        <!--
-        <div class="social-links">
-            <h2>Мои соцсети</h2>
-            <ul>
-                <li><a href="https://vk.com/твойпрофиль" target="_blank">ВКонтакте</a></li>
-                <li><a href="https://instagram.com/твойпрофиль" target="_blank">Instagram</a></li>
-                <li><a href="https://twitter.com/твойпрофиль" target="_blank">Twitter</a></li>
-                <!-- Добавь другие соцсети -->
-            <!--</ul>
-        </div>
-        -->
 
     </div>
 
