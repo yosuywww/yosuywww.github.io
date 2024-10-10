@@ -7,24 +7,41 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at center, #1b1b1b 0%, #000 100%);
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #000;
+            color: #f0f0f0;
+        }
+
+        h1, h2 {
+            color: #fff;
+        }
+
+        .content {
             padding: 20px;
         }
-        h1, h2 {
-            color: #333;
-        }
+
         .settings, .social-links {
             margin-bottom: 30px;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(30, 30, 30, 0.9);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
         a {
             color: #3498db;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
@@ -32,25 +49,55 @@
 </head>
 <body>
 
-    <h1>Привет! Это мои игровые настройки и соцсети</h1>
+    <!-- Основное содержание -->
+    <div class="content">
+        <h1>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h1>
 
-    <div class="settings">
-        <h2>Мои игровые настройки</h2>
-        <ul>
-            <li><strong>Игра 1:</strong> Настройки графики — высокие, чувствительность мыши — 3.5</li>
-            <li><strong>Игра 2:</strong> Чувствительность — 2.0, ключевые бинды — WASD</li>
-            <!-- Добавь свои игры и настройки -->
-        </ul>
-    </div>
+        <div class="settings">
+            <h2>VALORANT</h2>
+            <ul>
+                <li><strong>Чувствительность:</strong> 0.42</li>
+                <li><strong>DPI:</strong> 800</li>
+                <li><strong>Разрешение экрана:</strong> 1280x1090</li>
+            </ul>
+        </div>
 
-    <div class="social-links">
-        <h2>Мои соцсети</h2>
-        <ul>
-            <li><a href="https://vk.com/твойпрофиль" target="_blank">ВКонтакте</a></li>
-            <li><a href="https://instagram.com/твойпрофиль" target="_blank">Instagram</a></li>
-            <li><a href="https://twitter.com/твойпрофиль" target="_blank">Twitter</a></li>
-            <!-- Добавь другие соцсети -->
-        </ul>
+        <div class="settings">
+            <h2>CS</h2>
+            <ul>
+                <li><strong>Настройки мыши:</strong></li>
+                <ul>
+                    <li><strong>DPI:</strong> 1200-800</li>
+                    <li><strong>Чувствительность мыши:</strong> 1.5</li>
+                    <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
+                    <li><strong>m_yaw:</strong> 0.022</li>
+                </ul>
+                <li><strong>Параметры запуска:</strong></li>
+                <ul>
+                    <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
+                </ul>
+                <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
+                <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
+                <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
+                <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
+                <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
+            </ul>
+        </div>
+
+        <!-- Блок соцсетей (если нужно) -->
+        <!--
+        <div class="social-links">
+            <h2>Мои соцсети</h2>
+            <ul>
+                <li><a href="https://vk.com/твойпрофиль" target="_blank">ВКонтакте</a></li>
+                <li><a href="https://instagram.com/твойпрофиль" target="_blank">Instagram</a></li>
+                <li><a href="https://twitter.com/твойпрофиль" target="_blank">Twitter</a></li>
+                <!-- Добавь другие соцсети -->
+            <!--</ul>
+        </div>
+        -->
+
     </div>
 
 </body>
+</html>
