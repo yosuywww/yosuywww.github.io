@@ -47,13 +47,16 @@
         }
 
         .content {
-            display: none;
-            padding: 20px;
-            text-align: left;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.6s ease, max-height 0.6s ease;
         }
 
         .active {
-            display: block;
+            opacity: 1;
+            max-height: 1000px;
+            overflow: visible;
         }
 
         ul {
@@ -116,9 +119,9 @@
             var i, content, tabs;
             content = document.getElementsByClassName("content");
             for (i = 0; i < content.length; i++) {
-                content[i].style.display = "none";
+                content[i].classList.remove("active");
             }
-            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
 
             tabs = document.getElementsByClassName("tab");
             for (i = 0; i < tabs.length; i++) {
@@ -128,7 +131,7 @@
         }
 
         // Показ первой вкладки по умолчанию
-        document.getElementById("valorant").style.display = "block";
+        document.getElementById("valorant").classList.add("active");
     </script>
 
 </body>
