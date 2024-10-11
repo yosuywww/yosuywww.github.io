@@ -1,638 +1,175 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yosuy...</title>
+    <title>Yosuy's Site</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            min-height: 100vh;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(120deg, #1b1b1b, #000);
-            background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite;
-            color: #f0f0f0;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            position: relative;
-            transition: background 0.3s ease, color 0.3s ease;
+            color: white;
+            transition: background 0.3s;
         }
 
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .container {
+            width: 80%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        h1 {
-            font-size: 4em;
-            margin: 0;
-            text-align: center;
-            animation: fadeIn 2s ease;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #2980b9;
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 20px;
         }
 
         .tabs {
             display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            animation: fadeIn 2s ease;
+            margin-bottom: 10px;
         }
 
         .tab {
-            margin: 0 15px;
-            padding: 10px 20px;
+            padding: 10px;
+            background-color: #2980b9;
+            margin-right: 5px;
             cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
             transition: background-color 0.3s;
         }
 
         .tab:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .content {
-            display: none;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.4s ease, max-height 0.4s ease;
+            background-color: #3498db;
         }
 
         .active {
             display: block;
-            opacity: 1;
-            max-height: 1000px;
         }
 
-        /* Cursor gradient interaction */
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.2), transparent);
-            pointer-events: none;
+        #about, #socials {
+            margin-top: 20px;
         }
 
-        /* Blur effect */
         .blur {
-            filter: blur(8px);
+            filter: blur(5px);
         }
 
-        /* Theme toggle button */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #f0f0f0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-    </style>
-</head>
-<body>
-
-    <button class="theme-toggle" onclick="toggleTheme()">Сменить тему</button>
-    
-    <h1>Привет</h1>
-    <div class="tabs">
-        <div class="tab" onclick="openTab('social')">Социальные сети</div>
-        <div class="tab" onclick="openTab('settings')">Настройки игр</div>
-    </div>
-
-    <div id="social" class="content">
-        <h2>Социальные сети</h2>
-        <ul>
-            <li><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></li>
-            <li><a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a></li>
-            <li>Discord: yosuy</li>
-            <li><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a></li>
-            <li>Valorant: <span class="blur">...размыто...</span></li>
-            <li>Telegram: <span class="blur">...размыто...</span></li>
-            <li><a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Trade Offer Steam</a></li>
-            <li><a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a></li>
-            <li>Valorant Tracker: <span class="blur">...размыто...</span></li>
-            <li><a href="https://soundcloud.com/yosuywww/likes" target="_blank">Мой плейлист</a></li>
-        </ul>
-    </div>
-
-    <div id="settings" class="content">
-        <h2>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h2>
-        <ul>
-            <li><strong>VALORANT</strong></li>
-            <ul>
-                <li><strong>Чувствительность:</strong> 0.42</li>
-                <li><strong>DPI:</strong> 800</li>
-                <li><strong>Разрешение экрана:</strong> 1280x1090</li>
-            </ul>
-            <li><strong>CS</strong></li>
-            <ul>
-                <li><strong>Настройки мыши:</strong></li>
-                <ul>
-                    <li><strong>DPI:</strong> 1200-800</li>
-                    <li><strong>Чувствительность мыши:</strong> 1.5</li>
-                    <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
-                    <li><strong>m_yaw:</strong> 0.022</li>
-                </ul>
-                <li><strong>Параметры запуска:</strong></li>
-                <ul>
-                    <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
-                </ul>
-                <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
-                <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
-                <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
-                <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
-                <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
-            </ul>
-        </ul>
-    </div>
-
-    <script>
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.content');
-
-        function openTab(tabName) {
-            contents.forEach(content => content.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-        }
-
-        // Cursor gradient interaction
-        document.addEventListener('mousemove', (e) => {
-            let x = e.clientX / window.innerWidth;
-            let y = e.clientY / window.innerHeight;
-            document.body.style.setProperty('--x', x * 100 + '%');
-            document.body.style.setProperty('--y', y * 100 + '%');
-        });
-
-        // Title animation with dots
-        let siteTitle = "yosuy";
-        let dots = "";
-        let dotCount = 0;
-
-        function animateTitle() {
-            dots = ".".repeat(dotCount);
-            document.title = siteTitle + dots;
-            dotCount = (dotCount + 1) % 4; // Cycles between 0 to 3 dots
-            setTimeout(animateTitle, 500); // Adjust the speed here
-        }
-
-        window.onload = animateTitle;
-
-        // Theme toggle function
-        function toggleTheme() {
-            const isDark = document.body.style.background.includes('#1b1Here’s the updated code with the following changes:
-
-1. The text "Привет" is now centered above the tabs.
-2. The "Социальные сети" section is hidden until the respective tab is clicked.
-3. Smooth transitions are added for showing and hiding content.
-4. A theme toggle button is added to switch between light and dark themes.
-5. The site title animates with dots.
-
-Here’s the complete HTML code:
-
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yosuy...</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(120deg, #1b1b1b, #000);
-            background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite;
-            color: #f0f0f0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        h1 {
-            font-size: 4em;
-            margin: 0;
-            text-align: center;
-            animation: fadeIn 2s ease;
-        }
-
-        @keyframes fadeIn {
+        @keyframes fade {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            animation: fadeIn 2s ease;
-        }
-
-        .tab {
-            margin: 0 15px;
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .tab:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .content {
-            display: none;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.4s ease, max-height 0.4s ease;
-        }
-
-        .active {
-            display: block;
-            opacity: 1;
-            max-height: 1000px;
-        }
-
-        /* Cursor gradient interaction */
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.2), transparent);
-            pointer-events: none;
-        }
-
-        /* Blur effect */
-        .blur {
-            filter: blur(8px);
-        }
-
-        /* Theme toggle button */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #f0f0f0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
     </style>
 </head>
 <body>
-
-    <button class="theme-toggle" onclick="toggleTheme()">Сменить тему</button>
-    
-    <h1>Привет</h1>
-    <div class="tabs">
-        <div class="tab" onclick="openTab('social')">Социальные сети</div>
-        <div class="tab" onclick="openTab('settings')">Настройки игр</div>
-    </div>
-
-    <div id="social" class="content">
-        <h2>Социальные сети</h2>
-        <ul>
-            <li><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></li>
-            <li><a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a></li>
-            <li>Discord: yosuy</li>
-            <li><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a></li>
-            <li>Valorant: <span class="blur">...размыто...</span></li>
-            <li>Telegram: <span class="blur">...размыто...</span></li>
-            <li><a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Trade Offer Steam</a></li>
-            <li><a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a></li>
-            <li>Valorant Tracker: <span class="blur">...размыто...</span></li>
-            <li><a href="https://soundcloud.com/yosuywww/likes" target="_blank">Мой плейлист</a></li>
-        </ul>
-    </div>
-
-    <div id="settings" class="content">
-        <h2>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h2>
-        <ul>
-            <li><strong>VALORANT</strong></li>
-            <ul>
-                <li><strong>Чувствительность:</strong> 0.42</li>
-                <li><strong>DPI:</strong> 800</li>
-                <li><strong>Разрешение экрана:</strong> 1280x1090</li>
-            </ul>
-            <li><strong>CS</strong></li>
-            <ul>
-                <li><strong>Настройки мыши:</strong></li>
+    <div class="container">
+        <header>
+            <h1>Yosuy</h1>
+            <nav>
                 <ul>
-                    <li><strong>DPI:</strong> 1200-800</li>
-                    <li><strong>Чувствительность мыши:</strong> 1.5</li>
-                    <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
-                    <li><strong>m_yaw:</strong> 0.022</li>
+                    <li><a href="#settings" onclick="openTab('settings')">My Settings</a></li>
+                    <li><a href="#socials" onclick="openTab('socials')">Social Links</a></li>
+                    <li><a href="#about" onclick="openTab('about')">About Me</a></li>
                 </ul>
-                <li><strong>Параметры запуска:</strong></li>
-                <ul>
-                    <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
-                </ul>
-                <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
-                <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
-                <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
-                <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
-                <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
-            </ul>
-        </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="settings" class="tab-content">
+                <h2>Game Settings</h2>
+                <div class="tabs">
+                    <div class="tab" onclick="openGameTab('valorant')">VALORANT</div>
+                    <div class="tab" onclick="openGameTab('cs')">CS</div>
+                </div>
+                <div id="valorant" class="game-tab-content">
+                    <h3>VALORANT</h3>
+                    <p>Sensitivity: 0.42, 800 DPI</p>
+                    <p>Resolution: 1280x1090</p>
+                </div>
+                <div id="cs" class="game-tab-content">
+                    <h3>CS</h3>
+                    <p>Mouse DPI: 1200-800</p>
+                    <p>Sensitivity: 1.5, Multiplier: 2.0, m_yaw: 0.022</p>
+                    <p>Crosshair: CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</p>
+                    <p>Viewmodel: viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</p>
+                    <p>HUD: hud_scaling 1; cl_hud_color 2; cl_showloadout 0</p>
+                    <p>Radar: cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1</p>
+                </div>
+            </section>
+            <section id="socials" class="tab-content">
+                <h2>Social Links</h2>
+                <p><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></p>
+                <p><a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a></p>
+                <p><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a></p>
+                <p><a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Steam Trade Offer</a></p>
+                <p><a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a></p>
+                <p class="blur">VALORANT tracker</p>
+                <p class="blur">Telegram</p>
+            </section>
+            <section id="about" class="tab-content">
+                <h2>About Me</h2>
+                <p>I'm Yosuy, a gamer who loves tweaking settings and playing competitively. I enjoy sharing my gaming experiences and optimizing settings for the best performance.</p>
+            </section>
+        </main>
     </div>
 
     <script>
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.content');
-
         function openTab(tabName) {
-            contents.forEach(content => content.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.style.display = 'none');
+            document.getElementById(tabName).style.display = 'block';
         }
 
-        // Cursor gradient interaction
+        function openGameTab(gameName) {
+            const gameTabs = document.querySelectorAll('.game-tab-content');
+            gameTabs.forEach(tab => tab.style.display = 'none');
+            document.getElementById(gameName).style.display = 'block';
+        }
+
         document.addEventListener('mousemove', (e) => {
-            let x = e.clientX / window.innerWidth;
-            let y = e.clientY / window.innerHeight;
-            document.body.style.setProperty('--x', x * 100 + '%');
-            document.body.style.setProperty('--y', y * 100 + '%');
+            const gradient = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, #8e44ad, #2980b9)`;
+            document.body.style.background = gradient;
         });
 
-        // Title animation with dots
-        let siteTitle = "yosuy";
-        let dots = "";
-        let dotCount = 0;
-
-        function animateTitle() {
-            dots = ".".repeat(dotCount);
-            document.title = siteTitle + dots;
-            dotCount = (dotCount + 1) % 4; // Cycles between 0 to 3 dots
-            setTimeout(animateTitle, 500); // Adjust the speed here
+        function blurEffect() {
+            const elementsToBlur = document.querySelectorAll('.blur');
+            elementsToBlur.forEach(el => {
+                el.style.filter = 'blur(5px)';
+            });
         }
 
-        window.onload = animateTitle;
-
-        // Theme toggle function
-        function toggleTheme() {
-            const isDark = document.bodyHere's the updated code based on your requirements:
-
-1. The text "Привет" is now above the tabs.
-2. The "Социальные сети" section is hidden and only appears when the respective tab is clicked.
-3. Added smooth transitions for content display.
-4. Included a theme toggle button at the top right corner to switch between dark and light themes.
-5. The site title animates with dots.
-
-```html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yosuy...</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(120deg, #1b1b1b, #000);
-            background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite;
-            color: #f0f0f0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        h1 {
-            font-size: 4em;
-            margin: 0;
-            text-align: center;
-            animation: fadeIn 2s ease;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            animation: fadeIn 2s ease;
-        }
-
-        .tab {
-            margin: 0 15px;
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .tab:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .content {
-            display: none;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.4s ease, max-height 0.4s ease;
-        }
-
-        .active {
-            display: block;
-            opacity: 1;
-            max-height: 1000px;
-        }
-
-        /* Cursor gradient interaction */
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.2), transparent);
-            pointer-events: none;
-        }
-
-        /* Blur effect */
-        .blur {
-            filter: blur(8px);
-        }
-
-        /* Theme toggle button */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #f0f0f0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-    </style>
-</head>
-<body>
-
-    <button class="theme-toggle" onclick="toggleTheme()">Сменить тему</button>
-    
-    <h1>Привет</h1>
-    <div class="tabs">
-        <div class="tab" onclick="openTab('social')">Социальные сети</div>
-        <div class="tab" onclick="openTab('settings')">Настройки игр</div>
-    </div>
-
-    <div id="social" class="content">
-        <h2>Социальные сети</h2>
-        <ul>
-            <li><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></li>
-            <li><a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a></li>
-            <li>Discord: yosuy</li>
-            <li><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a></li>
-            <li>Valorant: <span class="blur">...размыто...</span></li>
-            <li>Telegram: <span class="blur">...размыто...</span></li>
-            <li><a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Trade Offer Steam</a></li>
-            <li><a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a></li>
-            <li>Valorant Tracker: <span class="blur">...размыто...</span></li>
-            <li><a href="https://soundcloud.com/yosuywww/likes" target="_blank">Мой плейлист</a></li>
-        </ul>
-    </div>
-
-    <div id="settings" class="content">
-        <h2>MY SETTINGS - МОИ НАСТРОЙКИ ВО ВСЕХ ИГРАХ</h2>
-        <ul>
-            <li><strong>VALORANT</strong></li>
-            <ul>
-                <li><strong>Чувствительность:</strong> 0.42</li>
-                <li><strong>DPI:</strong> 800</li>
-                <li><strong>Разрешение экрана:</strong> 1280x1090</li>
-            </ul>
-            <li><strong>CS</strong></li>
-            <ul>
-                <li><strong>Настройки мыши:</strong></li>
-                <ul>
-                    <li><strong>DPI:</strong> 1200-800</li>
-                    <li><strong>Чувствительность мыши:</strong> 1.5</li>
-                    <li><strong>Множ. чувствительности увеличения:</strong> 2.0</li>
-                    <li><strong>m_yaw:</strong> 0.022</li>
-                </ul>
-                <li><strong>Параметры запуска:</strong></li>
-                <ul>
-                    <li>-language english -freq 144 -novid -tickrate 128 +cl_interp_ratio 2 +fps_max 0 +cl_interp 1</li>
-                </ul>
-                <li><strong>Прицел:</strong> CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</li>
-                <li><strong>Viewmodel:</strong> viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</li>
-                <li><strong>HUD:</strong> hud_scaling 1; cl_hud_color 2; cl_showloadout 0; safezonex 1; safezoney 1</li>
-                <li><strong>Радар:</strong> cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1; cl_radar_rotate 1; cl_radar_icon_scale_min 0.6</li>
-                <li><a href="https://settings.gg/player/1198694381" target="_blank">САЙТ НАСТРОЕК В КС</a></li>
-            </ul>
-        </ul>
-    </div>
-
-    <script>
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.content');
-
-        function openTab(tabName) {
-            contents.forEach(content => content.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-        }
-
-        // Cursor gradient interaction
-        document.addEventListener('mousemove', (e) => {
-            let x = e.clientX / window.innerWidth;
-            let y = e.clientY / window.innerHeight;
-            document.body.style.setProperty('--x', x * 100 + '%');
-            document.body.style.setProperty('--y', y * 100 + '%');
-        });
-
-        // Title animation with dots
-        let siteTitle = "yosuy";
-        let dots = "";
-        let dotCount = 0;
-
-        function animateTitle() {
-            dots = ".".repeat(dotCount);
-            document.title = siteTitle + dots;
-            dotCount = (dotCount + 1) % 4; // Cycles between 0 to 3 dots
-            setTimeout(animateTitle, 500); // Adjust the speed here
-        }
-
-        window.onload = animateTitle;
-
-        // Theme toggle function
-        function toggleTheme() {
-            const isDark = document
-
-            const isDark = document.body.style.background.includes('1b1b1b');
-            if (isDark) {
-                document.body.style.background = 'linear-gradient(120deg, #ffffff, #e0e0e0)';
-                document.body.style.color = '#000000';
-            } else {
-                document.body.style.background = 'linear-gradient(120deg, #1b1b1b, #000)';
-                document.body.style.color = '#f0f0f0';
-            }
-        }
+        blurEffect();
     </script>
 </body>
 </html>
