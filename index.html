@@ -7,169 +7,186 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #2980b9, #8e44ad);
-            min-height: 100vh;
+            background-color: #000;
+            background: radial-gradient(circle, #111, #222, #000);
+            color: #fff;
+            transition: background 0.5s ease;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            transition: background 0.3s;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        .container {
-            width: 80%;
+        h1, h2 {
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        nav {
+            text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            color: white;
+        nav a {
+            color: #fff;
             text-decoration: none;
-            transition: color 0.3s;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: #2980b9;
+        nav a:hover {
+            color: #3498db;
         }
 
-        .tab-content {
+        .content {
             display: none;
-            margin-top: 20px;
-        }
-
-        .tabs {
-            display: flex;
-            margin-bottom: 10px;
-        }
-
-        .tab {
-            padding: 10px;
-            background-color: #2980b9;
-            margin-right: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .tab:hover {
-            background-color: #3498db;
+            animation: fadeIn 1s ease forwards;
         }
 
         .active {
             display: block;
         }
 
-        #about, #socials {
-            margin-top: 20px;
+        .welcome {
+            font-size: 24px;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 3s ease;
         }
 
-        .blur {
-            filter: blur(5px);
+        .social-links a {
+            display: block;
+            margin: 10px 0;
+            color: #3498db;
+            text-align: center;
         }
 
-        @keyframes fade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            background-color: #111;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .theme-switch {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #3498db;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .theme-switch.light-mode {
+            background: #fff;
+        }
+
+        .theme-switch img {
+            width: 24px;
+            height: 24px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Yosuy</h1>
-            <nav>
-                <ul>
-                    <li><a href="#settings" onclick="openTab('settings')">My Settings</a></li>
-                    <li><a href="#socials" onclick="openTab('socials')">Social Links</a></li>
-                    <li><a href="#about" onclick="openTab('about')">About Me</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="settings" class="tab-content">
-                <h2>Game Settings</h2>
-                <div class="tabs">
-                    <div class="tab" onclick="openGameTab('valorant')">VALORANT</div>
-                    <div class="tab" onclick="openGameTab('cs')">CS</div>
-                </div>
-                <div id="valorant" class="game-tab-content">
-                    <h3>VALORANT</h3>
-                    <p>Sensitivity: 0.42, 800 DPI</p>
-                    <p>Resolution: 1280x1090</p>
-                </div>
-                <div id="cs" class="game-tab-content">
-                    <h3>CS</h3>
-                    <p>Mouse DPI: 1200-800</p>
-                    <p>Sensitivity: 1.5, Multiplier: 2.0, m_yaw: 0.022</p>
-                    <p>Crosshair: CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</p>
-                    <p>Viewmodel: viewmodel_fov 68; viewmodel_offset_x 2.5; viewmodel_offset_y 0; viewmodel_offset_z -2; viewmodel_presetpos 1</p>
-                    <p>HUD: hud_scaling 1; cl_hud_color 2; cl_showloadout 0</p>
-                    <p>Radar: cl_hud_radar_scale 1; cl_radar_scale 0.7; cl_radar_always_centered 1</p>
-                </div>
-            </section>
-            <section id="socials" class="tab-content">
-                <h2>Social Links</h2>
-                <p><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></p>
-                <p><a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a></p>
-                <p><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a></p>
-                <p><a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Steam Trade Offer</a></p>
-                <p><a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a></p>
-                <p class="blur">VALORANT tracker</p>
-                <p class="blur">Telegram</p>
-            </section>
-            <section id="about" class="tab-content">
-                <h2>About Me</h2>
-                <p>I'm Yosuy, a gamer who loves tweaking settings and playing competitively. I enjoy sharing my gaming experiences and optimizing settings for the best performance.</p>
-            </section>
-        </main>
+
+<div class="theme-switch" id="theme-switch" onclick="switchTheme()">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/sun.png" id="theme-icon" alt="theme switch icon">
+</div>
+
+<header>
+    <h1>Welcome to Yosuy's Website</h1>
+    <nav>
+        <a href="#welcome" onclick="openTab('welcome')">Home</a>
+        <a href="#settings" onclick="openTab('settings')">Game Settings</a>
+        <a href="#socials" onclick="openTab('socials')">Social Links</a>
+        <a href="#about" onclick="openTab('about')">About</a>
+    </nav>
+</header>
+
+<section id="welcome" class="content active">
+    <div class="welcome">Привет, это мой сайт, посвящённый моим игровым настройкам и социальным ссылкам!</div>
+</section>
+
+<section id="settings" class="content">
+    <h2>Game Settings</h2>
+    <div>
+        <h3>VALORANT</h3>
+        <p>Sensitivity: 0.42, 800 DPI</p>
+        <p>Resolution: 1280x1090</p>
     </div>
+    <div>
+        <h3>CS</h3>
+        <p>Mouse DPI: 1200-800</p>
+        <p>Sensitivity: 1.5, Multiplier: 2.0, m_yaw: 0.022</p>
+        <p>Crosshair: CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</p>
+    </div>
+</section>
 
-    <script>
-        function openTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.style.display = 'none');
-            document.getElementById(tabName).style.display = 'block';
+<section id="socials" class="content">
+    <h2>Social Links</h2>
+    <div class="social-links">
+        <a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a>
+        <a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a>
+        <a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a>
+        <a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Steam Trade Offer</a>
+        <a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a>
+        <p class="blur">VALORANT tracker (скрыто)</p>
+        <p class="blur">Telegram (скрыто)</p>
+    </div>
+</section>
+
+<section id="about" class="content">
+    <h2>About Me</h2>
+    <p>Я Yosuy, увлекаюсь играми и оптимизацией игровых настроек для максимальной производительности.</p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Yosuy</p>
+</footer>
+
+<script>
+    // Плавные переходы вкладок
+    function openTab(tabName) {
+        const tabs = document.querySelectorAll('.content');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabName).classList.add('active');
+    }
+
+    // Анимированный градиент, реагирующий на движение курсора
+    document.addEventListener('mousemove', (e) => {
+        const gradient = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, #3498db, #8e44ad)`;
+        document.body.style.background = gradient;
+    });
+
+    // Смена темы
+    function switchTheme() {
+        const body = document.body;
+        const icon = document.getElementById('theme-icon');
+        body.classList.toggle('light-mode');
+        if (body.classList.contains('light-mode')) {
+            body.style.background = '#fff';
+            icon.src = 'https://img.icons8.com/ios-filled/50/000000/moon.png';
+        } else {
+            body.style.background = '#000';
+            icon.src = 'https://img.icons8.com/ios-filled/50/ffffff/sun.png';
         }
+    }
 
-        function openGameTab(gameName) {
-            const gameTabs = document.querySelectorAll('.game-tab-content');
-            gameTabs.forEach(tab => tab.style.display = 'none');
-            document.getElementById(gameName).style.display = 'block';
-        }
+    // Анимация заголовка сайта
+    document.title = "Yosuy's Gaming Hub";
+    setInterval(() => {
+        document.title = document.title === "Yosuy's Gaming Hub" ? "Settings & Social Links" : "Yosuy's Gaming Hub";
+    }, 3000);
+</script>
 
-        document.addEventListener('mousemove', (e) => {
-            const gradient = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, #8e44ad, #2980b9)`;
-            document.body.style.background = gradient;
-        });
-
-        function blurEffect() {
-            const elementsToBlur = document.querySelectorAll('.blur');
-            elementsToBlur.forEach(el => {
-                el.style.filter = 'blur(5px)';
-            });
-        }
-
-        blurEffect();
-    </script>
 </body>
 </html>
