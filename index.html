@@ -13,10 +13,13 @@
             background-size: 200% 200%;
             animation: gradientAnimation 10s ease infinite;
             color: #f0f0f0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
 
-        /* Animation for background gradient */
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -24,22 +27,22 @@
         }
 
         h1 {
-            text-align: center;
-            margin-top: 20px;
             font-size: 4em;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
+            margin: 0;
+            text-align: center;
+            animation: fadeIn 2s ease;
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .tabs {
             display: flex;
             justify-content: center;
             margin-top: 20px;
+            animation: fadeIn 2s ease;
         }
 
         .tab {
@@ -48,15 +51,15 @@
             cursor: pointer;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
         }
 
         .tab:hover {
             background-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
         }
 
         .content {
+            display: none;
             opacity: 0;
             max-height: 0;
             overflow: hidden;
@@ -64,62 +67,39 @@
         }
 
         .active {
+            display: block;
             opacity: 1;
             max-height: 1000px;
-            overflow: visible;
         }
 
-        ul {
-            padding-left: 20px;
-            line-height: 1.6;
-        }
-
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Cursor Interaction */
-        body {
-            background-attachment: fixed;
-        }
-
-        body:hover {
-            cursor: none;
-        }
-
-        body::before {
+        /* Cursor gradient interaction */
+        body::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.2), transparent);
             pointer-events: none;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
-            transform: scale(0);
-            transition: transform 0.2s;
         }
 
-        body:hover::before {
-            transform: scale(10);
+        /* Blur effect */
+        .blur {
+            filter: blur(8px);
         }
+
     </style>
 </head>
 <body>
 
     <h1>Привет</h1>
-
     <div class="tabs">
         <div class="tab" onclick="openTab('social')">Социальные сети</div>
         <div class="tab" onclick="openTab('settings')">Настройки игр</div>
     </div>
 
-    <div id="social" class="content active">
+    <div id="social" class="content">
         <h2>Социальные сети</h2>
         <ul>
             <li><a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a></li>
@@ -169,23 +149,36 @@
     <script>
         const tabs = document.querySelectorAll('.tab');
         const contents = document.querySelectorAll('.content');
-        
+
         function openTab(tabName) {
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
+            contents.forEach(content => content.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
         }
 
-        // Показ первой вкладки по умолчанию
-        document.getElementById("social").classList.add("active");
-
-        // Анимация взаимодействия с курсором
+        // Cursor gradient interaction
         document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+            let x = e.clientX / window.innerWidth;
+            let y = e.clientY / window.innerHeight;
+            document.body.style.setProperty('--x', x * 100 + '%');
+            document.body.style.setProperty('--y', y * 100 + '%');
         });
+
+        // Title animation with dots
+        let siteTitle = "yosuy";
+        let dots = "";
+        let dotCount = 0;
+
+        function animateTitle() {
+            dots = ".".repeat(dotCount);
+            document.title = siteTitle + dots;
+            dotCount = (dotCount + 1) % 4; // Cycles between 0 to 3 dots
+            setTimeout(animateTitle, 500); // Adjust the speed here
+        }
+
+        window.onload = animateTitle;
+
+        // Show default page content
+        document.getElementById("social").classList.add("active");
     </script>
 
 </body>
