@@ -3,190 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yosuy's Site</title>
+    <title>Yosuy's Gaming Setup</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            background: radial-gradient(circle, #111, #222, #000);
-            color: #fff;
-            transition: background 0.5s ease;
+        /* Общие стили */
+        * {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-
-        h1, h2 {
-            text-align: center;
-            animation: fadeIn 2s ease;
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
         }
-
-        nav {
-            text-align: center;
-            padding: 20px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #3498db;
-        }
-
-        .content {
+        .hidden {
             display: none;
-            animation: fadeIn 1s ease forwards;
         }
-
-        .active {
-            display: block;
+        /* Плавные анимации */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
         }
-
-        .welcome {
-            font-size: 24px;
-            text-align: center;
-            padding: 40px;
-            animation: fadeIn 3s ease;
-        }
-
-        .social-links a {
-            display: block;
-            margin: 10px 0;
-            color: #3498db;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            background-color: #111;
-        }
-
-        /* Animation */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .theme-switch {
+        /* Стиль приветственного сообщения */
+        .welcome {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        /* Ссылки на соцсети */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .social {
+            text-decoration: none;
+            color: inherit;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .social img {
+            width: 26px;
+            height: 26px;
+            transition: transform 0.3s ease;
+        }
+        .social:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .social img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Кнопка для смены темы */
+        #theme-button {
             position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #3498db;
-            padding: 10px;
-            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
             cursor: pointer;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        #theme-button:hover {
+            background-color: #555;
         }
 
-        .theme-switch.light-mode {
-            background: #fff;
+        /* Всплывающее окно копирования Discord */
+        #copy-alert {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #copy-alert.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .theme-switch img {
-            width: 24px;
-            height: 24px;
+        /* Темная тема */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode #theme-button {
+            background-color: #555;
+            color: #e0e0e0;
+        }
+        body.dark-mode .social img {
+            filter: invert(1);
+        }
+
+        /* Анимированный параллакс-фон */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1%, transparent 1%) center/10px 10px;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0.4;
         }
     </style>
 </head>
 <body>
+    <header>
+        <button id="theme-button">Toggle Theme</button>
+    </header>
+    
+    <main class="fade-in">
+        <section class="welcome fade-in">
+            <h1>Welcome to Yosuy's Gaming Setup</h1>
+            <p>Explore my gaming settings and connect with me on social media!</p>
+        </section>
+        
+        <section class="social-links fade-in">
+            <a href="https://www.twitch.tv/yosuywww" target="_blank" class="social twitch">
+                <img src="images/twitch-logo.png" alt="Twitch"> Twitch
+            </a>
+            <a href="https://www.youtube.com/@yosuy" target="_blank" class="social youtube">
+                <img src="images/youtube-logo.png" alt="YouTube"> YouTube
+            </a>
+            <button class="social discord" onclick="copyDiscord()">
+                <img src="images/discord-logo.png" alt="Discord"> Discord
+            </button>
+            <a href="https://steamcommunity.com/id/yosuy" target="_blank" class="social steam">
+                <img src="images/steam-logo.png" alt="Steam"> Steam
+            </a>
+        </section>
 
-<div class="theme-switch" id="theme-switch" onclick="switchTheme()">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/sun.png" id="theme-icon" alt="theme switch icon">
-</div>
+        <section class="settings-tab fade-in">
+            <a href="settings.html" class="settings-link">Game Settings</a>
+        </section>
 
-<header>
-    <h1>Welcome to Yosuy's Website</h1>
-    <nav>
-        <a href="#welcome" onclick="openTab('welcome')">Home</a>
-        <a href="#settings" onclick="openTab('settings')">Game Settings</a>
-        <a href="#socials" onclick="openTab('socials')">Social Links</a>
-        <a href="#about" onclick="openTab('about')">About</a>
-    </nav>
-</header>
+        <p id="copy-alert">Discord username copied!</p>
+    </main>
 
-<section id="welcome" class="content active">
-    <div class="welcome">Привет, это мой сайт, посвящённый моим игровым настройкам и социальным ссылкам!</div>
-</section>
+    <script>
+        // Переключение темной и светлой темы
+        const themeButton = document.getElementById("theme-button");
+        themeButton.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
 
-<section id="settings" class="content">
-    <h2>Game Settings</h2>
-    <div>
-        <h3>VALORANT</h3>
-        <p>Sensitivity: 0.42, 800 DPI</p>
-        <p>Resolution: 1280x1090</p>
-    </div>
-    <div>
-        <h3>CS</h3>
-        <p>Mouse DPI: 1200-800</p>
-        <p>Sensitivity: 1.5, Multiplier: 2.0, m_yaw: 0.022</p>
-        <p>Crosshair: CSGO-rDPaz-zarDj-K8udk-V9yDE-pqAQL</p>
-    </div>
-</section>
-
-<section id="socials" class="content">
-    <h2>Social Links</h2>
-    <div class="social-links">
-        <a href="https://steamcommunity.com/id/yosuy/" target="_blank">Steam</a>
-        <a href="https://www.twitch.tv/yosuywww" target="_blank">Twitch</a>
-        <a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">YouTube</a>
-        <a href="https://steamcommunity.com/tradeoffer/new/?partner=1198694381&token=-2MbJ9hZ" target="_blank">Steam Trade Offer</a>
-        <a href="https://www.faceit.com/ru/players/yosuywww" target="_blank">Faceit</a>
-        <p class="blur">VALORANT tracker (скрыто)</p>
-        <p class="blur">Telegram (скрыто)</p>
-    </div>
-</section>
-
-<section id="about" class="content">
-    <h2>About Me</h2>
-    <p>Я Yosuy, увлекаюсь играми и оптимизацией игровых настроек для максимальной производительности.</p>
-</section>
-
-<footer>
-    <p>&copy; 2024 Yosuy</p>
-</footer>
-
-<script>
-    // Плавные переходы вкладок
-    function openTab(tabName) {
-        const tabs = document.querySelectorAll('.content');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabName).classList.add('active');
-    }
-
-    // Анимированный градиент, реагирующий на движение курсора
-    document.addEventListener('mousemove', (e) => {
-        const gradient = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, #3498db, #8e44ad)`;
-        document.body.style.background = gradient;
-    });
-
-    // Смена темы
-    function switchTheme() {
-        const body = document.body;
-        const icon = document.getElementById('theme-icon');
-        body.classList.toggle('light-mode');
-        if (body.classList.contains('light-mode')) {
-            body.style.background = '#fff';
-            icon.src = 'https://img.icons8.com/ios-filled/50/000000/moon.png';
-        } else {
-            body.style.background = '#000';
-            icon.src = 'https://img.icons8.com/ios-filled/50/ffffff/sun.png';
+        // Копирование Discord
+        function copyDiscord() {
+            navigator.clipboard.writeText("yosuy").then(() => {
+                const alert = document.getElementById("copy-alert");
+                alert.classList.add("visible");
+                setTimeout(() => alert.classList.remove("visible"), 2000);
+            });
         }
-    }
 
-    // Анимация заголовка сайта
-    document.title = "Yosuy's Gaming Hub";
-    setInterval(() => {
-        document.title = document.title === "Yosuy's Gaming Hub" ? "Settings & Social Links" : "Yosuy's Gaming Hub";
-    }, 3000);
-</script>
+        // Параллакс-эффект для фона
+        document.addEventListener("mousemove", (event) => {
+            const x = (event.clientX - window.innerWidth / 2) / 50;
+            const y = (event.clientY - window.innerHeight / 2) / 50;
+            document.body.style.setProperty('--bg-pos-x', `${x}px`);
+            document.body.style.setProperty('--bg-pos-y', `${y}px`);
+        });
 
+        // Анимация фона при изменении курсора
+        document.body.style.setProperty('--bg-pos-x', '0px');
+        document.body.style.setProperty('--bg-pos-y', '0px');
+    </script>
 </body>
 </html>
