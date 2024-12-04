@@ -19,7 +19,7 @@
             min-height: 100vh;
             overflow: hidden;
             transition: background-color 0.3s, color 0.3s;
-            perspective: 1px; /* Для параллакса */
+            perspective: 1px;
             background-color: #1a1a1a;
             color: #f0f0f0;
         }
@@ -31,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://source.unsplash.com/1600x900/?gaming'); /* Ссылка на фоновое изображение */
+            background-image: url('https://source.unsplash.com/1600x900/?gaming');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -40,10 +40,43 @@
             transform: translateZ(-1px) scale(1.5);
         }
 
+        /* Экран загрузки */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        #loader.hidden {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
         /* Контейнер для контента */
         .container {
             text-align: center;
             z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .container.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Приветственный текст */
@@ -51,7 +84,7 @@
             font-size: 2.5em;
             font-weight: bold;
             margin-bottom: 10px;
-            animation: fadeIn 1.5s ease;
+            animation: slideIn 1.5s ease;
         }
 
         .description {
@@ -67,7 +100,6 @@
             gap: 20px;
             justify-content: center;
             margin-top: 20px;
-            animation: fadeIn 2.5s ease;
         }
 
         .social {
@@ -81,7 +113,7 @@
             text-decoration: none;
             font-size: 1.1em;
             transition: background-color 0.3s, transform 0.3s;
-            backface-visibility: hidden; /* Для плавности анимации */
+            backface-visibility: hidden;
         }
 
         .social img {
@@ -161,9 +193,19 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
+    <!-- Экран загрузки -->
+    <div id="loader">
+        <l-jelly size="40" speed="0.9" color="white"></l-jelly>
+    </div>
+
     <div class="parallax-background"></div> <!-- Параллакс фон -->
 
     <div class="container">
@@ -188,18 +230,8 @@
 
     <button id="theme-button" onclick="toggleTheme()">Toggle Theme</button>
 
+    <script src="https://cdn.jsdelivr.net/npm/ldrs/dist/index.min.js"></script>
     <script>
         // Переключение темы
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-        }
+        function
 
-        // Копирование Discord ника
-        function copyDiscord() {
-            navigator.clipboard.writeText("yosuy").then(() => {
-                alert("Discord username copied!");
-            });
-        }
-    </script>
-</body>
-</html>
