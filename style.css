@@ -1,11 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 body {
   margin: 0;
-  padding: 0;
-  background-color: #000;
-  color: white;
+  background: #000;
+  color: #fff;
   font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
@@ -15,74 +13,90 @@ body {
 
 .card-container {
   display: flex;
-  gap: 2rem;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .card {
+  position: relative;
   width: 220px;
   height: 250px;
   background-color: #0a0a0a;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: left;
+  box-shadow: 0 0 0 2px transparent;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-}
-
-.card h3 {
-  margin: 1.2rem 0 0.3rem;
-  font-size: 1.2rem;
-}
-
-.card p {
-  font-size: 0.9rem;
-  color: #aaa;
-}
-
-.icon {
-  width: 32px;
-  height: 32px;
+  transform: scale(1.06);
 }
 
 .card::before {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  z-index: -1;
-  border-radius: 18px;
-  background: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc, #ffcc00);
   background-size: 300% 300%;
-  animation: gradient-border 4s ease infinite;
+  animation: animated-border 6s ease infinite;
+  z-index: -1;
+  border-radius: 20px;
   opacity: 0.8;
-  filter: blur(10px);
+  transition: opacity 0.3s ease;
 }
 
-.gradient-1::before {
-  background: linear-gradient(45deg, #ff6ec4, #ffb86c);
+.card:hover::before {
+  opacity: 1;
 }
 
-.gradient-2::before {
-  background: linear-gradient(45deg, #8b5cf6, #7dd3fc);
+.icon {
+  width: 40px;
+  height: 40px;
 }
 
-.gradient-3::before {
-  background: linear-gradient(45deg, #34d399, #60a5fa);
+.card h3 {
+  margin-top: 1.2rem;
+  font-size: 1.2rem;
 }
 
-@keyframes gradient-border {
+.card p a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.card p a:hover {
+  color: #fff;
+}
+
+.copy-alert {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 0.8rem;
+  color: #00ff99;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes animated-border {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* Optional: different gradient colors per card */
+.gradient-twitch::before  { background: linear-gradient(45deg, #9146FF, #6e00ff, #b255ff); }
+.gradient-youtube::before { background: linear-gradient(45deg, #FF0000, #cc0000, #ff4444); }
+.gradient-discord::before { background: linear-gradient(45deg, #5865F2, #404eed, #7289da); }
+.gradient-steam::before   { background: linear-gradient(45deg, #1b2838, #00adee, #3b8ec4); }
+.gradient-settings::before{ background: linear-gradient(45deg, #4ade80, #10b981, #06b6d4); }
