@@ -4,25 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yosuy | MultiSoft</title>
-  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="card-container">
-    <div class="card gradient-1">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" alt="Swift" class="icon" />
-      <h3>Modern iOS apps</h3>
-      <p>Cruising from Swift to AppStore.</p>
+
+    <div class="card gradient-twitch">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/twitch.png" class="icon" />
+      <h3>Twitch</h3>
+      <p><a href="https://www.twitch.tv/yosuywww" target="_blank">yosuywww</a></p>
     </div>
-    <div class="card gradient-2">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webflow/webflow-original.svg" alt="Webflow" class="icon" />
-      <h3>No-code websites</h3>
-      <p>Vibrant designs with Webflow.</p>
+
+    <div class="card gradient-youtube">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" class="icon" />
+      <h3>YouTube</h3>
+      <p><a href="https://www.youtube.com/channel/UCSXNh-2BaWisjFHwTdMRFew" target="_blank">My Channel</a></p>
     </div>
-    <div class="card gradient-3">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="icon" />
-      <h3>Delish UI</h3>
-      <p>Crafting products with Figma.</p>
+
+    <div class="card gradient-discord" onclick="copyDiscord()">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" class="icon" />
+      <h3>Discord</h3>
+      <p id="discordText">yosuy</p>
+      <span class="copy-alert" id="copyAlert">Copied!</span>
     </div>
+
+    <div class="card gradient-steam">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/steam.png" class="icon" />
+      <h3>Steam</h3>
+      <p><a href="https://steamcommunity.com/id/yosuy/" target="_blank">steamcommunity.com/id/yosuy</a></p>
+    </div>
+
+    <div class="card gradient-settings">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" class="icon" />
+      <h3>Game Settings</h3>
+      <p><a href="settings.html">View my setup</a></p>
+    </div>
+
   </div>
+
+  <script>
+    function copyDiscord() {
+      navigator.clipboard.writeText("yosuy");
+      const alert = document.getElementById("copyAlert");
+      alert.style.opacity = 1;
+      setTimeout(() => {
+        alert.style.opacity = 0;
+      }, 1500);
+    }
+  </script>
 </body>
 </html>
