@@ -1,1 +1,88 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 220px;
+  height: 250px;
+  background-color: #0a0a0a;
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin: 1.2rem 0 0.3rem;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: 18px;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+  background-size: 300% 300%;
+  animation: gradient-border 4s ease infinite;
+  opacity: 0.8;
+  filter: blur(10px);
+}
+
+.gradient-1::before {
+  background: linear-gradient(45deg, #ff6ec4, #ffb86c);
+}
+
+.gradient-2::before {
+  background: linear-gradient(45deg, #8b5cf6, #7dd3fc);
+}
+
+.gradient-3::before {
+  background: linear-gradient(45deg, #34d399, #60a5fa);
+}
+
+@keyframes gradient-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
