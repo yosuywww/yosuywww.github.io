@@ -1,62 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-body {
+* {
   margin: 0;
-  background: #000;
-  color: #fff;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
   font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 2rem;
+  color: white;
 }
 
-.card-container {
+.card-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 2rem;
+  justify-content: center;
 }
 
 .card {
   position: relative;
   width: 220px;
   height: 250px;
-  background-color: #0a0a0a;
+  background: #0a0a0a;
   border-radius: 18px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: pointer;
+  align-items: flex-start;
+  z-index: 1;
   overflow: hidden;
+  cursor: pointer;
   transition: transform 0.3s ease;
-  text-align: left;
-  box-shadow: 0 0 0 2px transparent;
+  box-shadow: 0 0 0 transparent;
 }
 
 .card:hover {
   transform: scale(1.06);
 }
 
-.card::before {
+/* GLOW effect */
+.glow::before {
   content: '';
   position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
   background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc, #ffcc00);
-  background-size: 300% 300%;
-  animation: animated-border 6s ease infinite;
+  background-size: 600% 600%;
+  animation: glowmove 6s ease infinite;
   z-index: -1;
-  border-radius: 20px;
-  opacity: 0.8;
+  filter: blur(35px);
+  opacity: 0.5;
   transition: opacity 0.3s ease;
+  border-radius: 25px;
 }
 
 .card:hover::before {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .icon {
@@ -67,6 +76,10 @@ body {
 .card h3 {
   margin-top: 1.2rem;
   font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.9rem;
 }
 
 .card p a {
@@ -88,15 +101,15 @@ body {
   transition: opacity 0.3s ease;
 }
 
-@keyframes animated-border {
+@keyframes glowmove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Optional: different gradient colors per card */
-.gradient-twitch::before  { background: linear-gradient(45deg, #9146FF, #6e00ff, #b255ff); }
-.gradient-youtube::before { background: linear-gradient(45deg, #FF0000, #cc0000, #ff4444); }
-.gradient-discord::before { background: linear-gradient(45deg, #5865F2, #404eed, #7289da); }
-.gradient-steam::before   { background: linear-gradient(45deg, #1b2838, #00adee, #3b8ec4); }
-.gradient-settings::before{ background: linear-gradient(45deg, #4ade80, #10b981, #06b6d4); }
+/* Optional: per-card color glow override */
+.twitch::before   { background: linear-gradient(45deg, #9146FF, #6e00ff, #b255ff); }
+.youtube::before  { background: linear-gradient(45deg, #FF0000, #cc0000, #ff4444); }
+.discord::before  { background: linear-gradient(45deg, #5865F2, #404eed, #7289da); }
+.steam::before    { background: linear-gradient(45deg, #1b2838, #00adee, #3b8ec4); }
+.settings::before { background: linear-gradient(45deg, #4ade80, #10b981, #06b6d4); }
