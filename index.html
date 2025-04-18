@@ -1,160 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yosuy's Portfolio</title>
-    <style>
-        /* Сброс стилей и базовая стилизация */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-            transition: background-color 0.3s, color 0.3s;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-        }
-
-        /* Фон с параллаксом */
-        .parallax-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://source.unsplash.com/1600x900/?technology,computer');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            z-index: -2;
-            opacity: 0.3;
-        }
-
-        /* Контейнер для контента */
-        .container {
-            text-align: center;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .container.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Текст портфолио */
-        .welcome {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            animation: slideIn 1.5s ease;
-        }
-
-        .description {
-            font-size: 1.2em;
-            color: #b3b3b3;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease;
-        }
-
-        /* Социальные ссылки */
-        .social-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .social {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
-            border-radius: 12px;
-            color: #f0f0f0;
-            background-color: rgba(51, 51, 51, 0.8);
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .social img {
-            width: 25px;
-            height: 25px;
-        }
-
-        .social:hover {
-            background-color: rgba(68, 68, 68, 0.9);
-            transform: translateY(-5px);
-        }
-
-        /* Анимация появления */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yosuy | MultiSoft</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="parallax-background"></div>
-
-    <div class="container" id="content">
-        <h1 class="welcome" id="welcome-text"></h1>
-        <p class="description" id="description-text"></p>
-
-        <div class="social-links">
-            <a href="https://www.twitch.tv/yosuywww" target="_blank" class="social">
-                <img src="https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/03-glitch.jpg?w=394&h=263&fm=jpg&auto=format" alt="Twitch"> Twitch
-            </a>
-            <a href="https://www.youtube.com/@yosuy" target="_blank" class="social">
-                <img src="https://t3.ftcdn.net/jpg/04/74/05/94/360_F_474059464_qldYuzxaUWEwNTtYBJ44VN89ARuFktHW.jpg" alt="YouTube"> YouTube
-            </a>
-            <a href="https://steamcommunity.com/id/yosuy" target="_blank" class="social">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/768px-Steam_icon_logo.svg.png" alt="Steam"> Steam
-            </a>
-        </div>
+  <div class="card-container">
+    <div class="card gradient-1">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" alt="Swift" class="icon" />
+      <h3>Modern iOS apps</h3>
+      <p>Cruising from Swift to AppStore.</p>
     </div>
-
-    <script>
-        // Определение языка браузера
-        const userLang = navigator.language || navigator.userLanguage;
-        const isRussian = userLang.startsWith('ru');
-
-        const translations = {
-            en: {
-                welcome: "Welcome to Yosuy's Portfolio",
-                description: "Discover my gaming skills, projects, and connect with me!"
-            },
-            ru: {
-                welcome: "Добро пожаловать в портфолио Yosuy",
-                description: "Узнайте о моих игровых навыках, проектах и свяжитесь со мной!"
-            }
-        };
-
-        const content = isRussian ? translations.ru : translations.en;
-
-        document.getElementById('welcome-text').textContent = content.welcome;
-        document.getElementById('description-text').textContent = content.description;
-
-        // Отображение контента после загрузки
-        window.addEventListener('load', () => {
-            document.querySelector('.container').classList.add('loaded');
-        });
-    </script>
+    <div class="card gradient-2">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webflow/webflow-original.svg" alt="Webflow" class="icon" />
+      <h3>No-code websites</h3>
+      <p>Vibrant designs with Webflow.</p>
+    </div>
+    <div class="card gradient-3">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="icon" />
+      <h3>Delish UI</h3>
+      <p>Crafting products with Figma.</p>
+    </div>
+  </div>
 </body>
 </html>
